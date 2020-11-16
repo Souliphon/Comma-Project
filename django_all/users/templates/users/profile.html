@@ -1,0 +1,74 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-8 offset-md-2">
+
+      <nav class="navbar navbar-expand-sm bg-light">
+
+        <!-- <div class="tooltip"> -->
+        <button class="btn btn-outline-primary btn-sm mt-1 mb-1" title="ເພີ່ມຂໍ້ມູນ">
+          <!-- <span class="tooltiptext">Example Tooltip</span> -->
+          <i class="fas fa-user-plus"></i>
+        </button>
+        <!-- </div> -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="btn btn-outline-info btn-sm mt-1 mb-1" title="ສ້າງເອກະສານເປັນຟຣາຍ PDF"
+              href="{% url 'employee-pdf' %}">
+              <i class="fas fa-file-pdf" style="font-size: 25px;"></i>
+
+            </a>
+            <a class="btn btn-outline-success btn-sm mt-1 mb-1" title="ສ້າງເອກະສານເປັນຟຣາຍ CSV"
+              href="{% url 'export-point' %}">
+              <i class="fas fa-file-csv" style="font-size: 25px;"></i>
+
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+
+
+      <div class="content-section">
+        <!-- <legend class="legend">ເພື່ອສຳເລັດການສະໝັກເປັນພະນັກງານຫ້ອງອ່ານປື້ມຮ້ານກາເຟຄອມມາກະລຸນາຕື່ມຂໍ້ມູນຂ້າງລຸ່ມໃຫ້ຄົບ</legend>  -->
+        <div class="media">
+          <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+          <div class="media-body">
+            <h2 class="account-heading">{{ user.username }}</h2>
+            <p class="text-secondary">{{ user.email }}</p>
+            <p class="text-secondary">{{ user.firstname }}</p>
+            <p class="text-secondary">{{ user.lastname }}</p>
+            <p class="text-secondary">{{ user.tel }}</p>
+            <p class="text-secondary">{{ user.sex }}</p>
+            <p class="text-secondary">{{ user.birthday|date:"d-m-Y" }}</p>
+            <p class="text-secondary">{{ user.village }}</p>
+            <p class="text-secondary">{{ user.district }}</p>
+            <p class="text-secondary">{{ user.province }}</p>
+
+          </div>
+        </div>
+        <!-- FORM HERE -->
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Profile Info</legend>
+            {{ u_form|crispy }}
+            {{ p_form|crispy }}
+          </fieldset>
+          <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Update</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+{% include "includes/bootstrap_js.html" %}
+
+
+{% endblock content %}

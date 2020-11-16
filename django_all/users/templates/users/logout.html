@@ -1,0 +1,21 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<main role="main" class="container">
+    <div class="row">
+        <div class="col-8 offset-md-2">
+
+            <h2>ທ່ານໄດ້ອອກຈາກລະບົບແລ້ວ!</h2>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    <a href="{% url 'login' %}">ຕ້ອງການເຂົ້າສູ່ລະບົບອີກຄັ້ງ</a>
+                </small>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+{% include "includes/bootstrap_js.html" %}
+
+{% endblock content %}

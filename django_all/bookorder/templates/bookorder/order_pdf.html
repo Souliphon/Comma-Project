@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Required meta tags -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<title>ລາຍງານຂໍ້ມູນການສັ່ງຊື້ປື້ມ</title>
+	<style type="text/css">
+		body {
+			background: #fafafa;
+			color: #333333;
+			margin-top: 5rem;
+			font-family: Phetsarath OT, Saysettha OT;
+		}
+
+		h3,
+		h4 {
+			color: #444444;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body onload="window.print()">
+	<h3>ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ <br>
+		ສັນຕິພາບ ເອກະລາດ ປະຊາທິປະໄຕ ເອກະພາບ ວັດທະນະຖາວອນ</h3><br><br>
+	<img src="{% static 'blog/comma_cafe_logo.png' %}" class="img-thumbnail" width="100px" height="100px"><br><br>
+	<h4>ລາຍງານຂໍ້ມູນການສັ່ງຊື້ປື້ມ</h4><br>
+	<table class="table table-striped table-light table-bordered">
+		<thead>
+			<tr>
+				<th scope="col">ລະຫັດການສັ່ງຊື້ປື້ມ</th>
+				<th scope="col">ວັນເດືອນປີສັ່ງຊື້ປື້ມ</th>
+				<th scope="col">ຈຳນວນ</th>
+				<th scope="col">ຊື່ຮ້ານຂາຍປື້ມ</th>
+				<th scope="col">ພະນັກງານ</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for bookorder in bookorders %}
+			<tr>
+				<td>{{ bookorder.id }}</td>
+				<td>{{ bookorder.date_order|date:"d-m-Y" }}</td>
+				<td>{{ bookorder.amount }}</td>
+				<td>{{ bookorder.bookstore }}</td>
+				<td>{{ bookorder.employee }}</td>
+			</tr>
+			{% endfor %}
+			<tr>
+				<td colspan="4">ຈຳນວນລາຍການສັ່ງຊື້ປື້ມທັງໝົດ</td>
+				<td>{{ total_bookorder }}</td>
+			</tr>
+		</tbody>
+	</table>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

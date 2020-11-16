@@ -1,0 +1,132 @@
+{%  load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Select Book</title>
+  {% include "includes/bootstrap_css.html" %}
+
+
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+
+</head>
+
+<body>
+  {% include "includes/navbar.html" %}
+
+
+
+  <div class="container">
+    <!-- mb-3 mt-3 -->
+    <h4 class="text-center">ອັບເດດສະຖານະປື້ມເພື່ອຢືມປື້ມ</h4>
+    <!-- 
+<nav class="navbar navbar-expand-sm bg-light"> 
+
+
+  <a class="btn btn-outline-primary btn-sm mt-1 mb-1" title="ເພີ່ມຂໍ້ມູນ" href="#">
+    <span class="tooltiptext">Example Tooltip</span>
+    <i class="fas fa-user-plus"></i>
+  </a>
+
+<ul class="navbar-nav ml-auto"> 
+     <li class="nav-item"> 
+  <a class="btn btn-outline-info btn-sm mt-1 mb-1" title="ສ້າງເອກະສານເປັນຟຣາຍ PDF" href="{% url 'book-pdf' %}">
+   <i class="fas fa-file-pdf" style="font-size: 25px;"></i>
+    
+  </a>
+  <a class="btn btn-outline-success btn-sm mt-1 mb-1" title="ສ້າງເອກະສານເປັນຟຣາຍ CSV" href="{% url 'export-book' %}">
+<i class="fas fa-file-csv" style="font-size: 25px;"></i>
+    
+  </a>
+      </li>  
+</ul> 
+</nav>  -->
+
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+      <thead>
+        <tr>
+          <th>ລະຫັດປື້ມ</th>
+          <th>ຊື່ເລື່ອງ</th>
+          <th>ຜູ້ແຕ່ງຫຼັກ</th>
+          <!-- <th>ລະຫັດກຳກັບປື້ມ</th> -->
+          <th>ສະຖານະປື້ມ</th>
+          <th>ປະເພດປື້ມ</th>
+          <th>ເລກໝວດເອກະສານ</th>
+          <th>ທາງເລືອກ</th>
+
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for book in books %}
+        <tr>
+
+          <td>{{ book.id }}</td>
+          <td>{{ book.title }}</td>
+          <td>{{ book.primary_author }}</td>
+          <!-- <td>{{ book.ISBN }}</td> -->
+          <td>{{ book.status }}</td>
+          <td>{{ book.booktype }}</td>
+          <td>{{ book.booktype.zone_number }}</td>
+
+          <td>
+
+            <a class="btn btn-outline-info btn-sm mt-1 mb-1" href="{% url 'book-update-borrow' book.id %}">
+              <i class="far fa-edit"></i>
+            </a>
+            <a class="btn btn-outline-success btn-sm mt-1 mb-1"
+              href="{% url 'borrow-book-update' book.id %}">ຢືມປື້ມ</a>
+          </td>
+
+        </tr>
+        {% endfor %}
+      </tbody>
+
+      <!--  <tfoot>
+      <tr>
+        <th>ລະຫັດປື້ມ</th>
+        <th>ຊື່ເລື່ອງ</th>
+        <th>ຜູ້ແຕ່ງຫຼັກ</th>
+        <th>ລະຫັດກຳກັບປື້ມ</th>
+        <th>ສະຖານະປື້ມ</th>
+        <th>ປະເພດປື້ມ</th>
+        <th>ເລກໝວດເອກະສານ</th>
+        <th>ທາງເລືອກ</th>
+      </tr>
+    </tfoot> -->
+    </table>
+
+  </div>
+
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#example').DataTable();
+    });
+  </script>
+
+
+</body>
+
+</html>

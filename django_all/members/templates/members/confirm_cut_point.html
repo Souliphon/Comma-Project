@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<main role="main" class="container">
+    <div class="row">
+        <div class="col-8 offset-md-2">
+
+            <div class="content-section">
+                <form action="{% url 'cut-point' orders.id %}" method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">ຕ້ອງການຕັດຄະແນນສະມາຊິກ</legend>
+                        <h2>ທ່ານຕ້ອງການຕັດຄະແນນສະມາຊິກທ່ານ "{{ orders.member.firstname }} {{ orders.member.surname }}"
+                        </h2>
+                        <p> ຈຳນວນຄະແນນ: "{{ orders.amount }}"</p>
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-outline-danger" type="submit">ແມ່ນ</button>
+                        <a class="btn btn-outline-secondary" href="{% url 'select-point' %}">ຍົກເລິກ</a>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</main>
+{% endblock content %}

@@ -1,0 +1,120 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+
+<main role="main" class="container">
+	<div class="row">
+		<div class="col-12 offset-md-0">
+
+			<div class="content-section">
+				<form method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					<fieldset class="form-control">
+						<legend class="border-bottom mb-4" style="text-align: center;">ຟອມເກັບຂໍ້ມູນປື້ມ</legend>
+						<div class="row">
+							<div class="col-4">
+								<label for="title">
+									ຊື່ເລື່ອງ
+								</label>
+								{{ form.title }}
+							</div>
+
+							<div class="col-4">
+								<label for="subject_heading">
+									ຫົວເລື່ອງ
+								</label>
+								{{ form.subject_heading }}
+							</div>
+
+							<div class="col-4">
+								<label for="primary_author">
+									ຜູ້ແຕ່ງຫຼັກ
+								</label>
+								{{ form.primary_author }}
+							</div>
+						</div>
+						</br>
+						<div class="row">
+							<div class="col-4">
+								<label for="coauthor">
+									ຜູ້ແຕ່ງທ່ານອື່ນ
+								</label>
+								{{ form.coauthor }}
+							</div>
+
+							<div class="col-4">
+								<label for="original_language">
+									ພາສາຕົ້ນສະບັບ
+								</label> <br>
+								{{ form.original_language }}
+							</div>
+
+							<div class="col-4">
+								<label for="price">
+									ລາຄາ
+								</label>
+								{{ form.price }}
+							</div>
+
+						</div>
+
+						</br>
+						<div class="row">
+							<div class="col-4">
+								<label for="page_element">
+									ຈຳນວນໜ້າ
+								</label>
+								{{ form.page_element }}
+							</div>
+
+							<div class="col-4">
+								<label for="ISBN">
+									ລະຫັດກຳກັບປື້ມ
+								</label>
+								{{ form.ISBN }}
+							</div>
+
+							<div class="col-4">
+								<label for="status">
+									ສະຖານະປື້ມ
+								</label>
+								{{ form.status }}
+							</div>
+						</div>
+
+						</br>
+						<div class="row">
+							<div class="col-4">
+								<label for="booktype">
+									ປະເພດປື້ມ
+								</label>
+								{{ form.booktype }}
+							</div>
+
+							<div class="col-4">
+								<label for="bookstore">
+									ຮ້ານຂາຍປື້ມ
+								</label>
+								{{ form.bookstore }}
+							</div>
+							<div class="col-2 d-flex align-items-end">
+								<button class="btn btn-outline-info" type="submit">Submit</button>
+							</div>
+
+						</div>
+					</fieldset>
+
+				</form>
+			</div>
+
+
+		</div>
+	</div>
+</main>
+{% include "includes/bootstrap_js.html" %}
+
+
+{% endblock content %}

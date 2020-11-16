@@ -1,0 +1,101 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-8 offset-md-2">
+
+      <div class="row">
+        <div class="col-4">
+          <img src="{% static 'blog/comma_cafe_logo.png' %}" class="img-thumbnail">
+        </div>
+        <div class="col-6 offset-md-0 d-flex align-items-center">
+          <h3 style="line-height: 1.6;">ສະບາຍດີ
+            <br>ຍິນດີຕ້ອນຮັບສູ່ລະບົບຈັດການ
+            <br>ຫ້ອງອ່ານປື້ມຮ້ານກາເຟຄອມມາ
+          </h3>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-4">
+          <p>ກະລຸນາກົດທີ່ປຸ່ມ <a class="btn btn-outline-warning" title="ຕັດຄະແນນສະມາຊິກ"
+              href="{% url 'select-point' %}">
+              <i class="fas fa-cut"></i>
+            </a><br>
+            ເພື່ອເລືອກຕັດຄະແນນ <br>
+            ຂອງສະມາຊິກ</p>
+
+        </div>
+
+        <div class="col-4">
+          <p>ກະລຸນາກົດທີ່ປຸ່ມ <a class="btn btn-outline-info" title="ສ້າງບິນຮັບເອົາປື້ມ"
+              href="{% url 'book-return-borrow' %}"><i class="fas fa-book"></i>
+            </a><br>
+            ເພື່ອຮັບເອົາປື້ມ <br>
+            ຈາກສະມາຊິກ</p>
+        </div>
+
+        <div class="col-4">
+          <p>ເພີ່ມຄະແນນການຊື້ຈຳນວນສິນຄ້າ
+            <br>
+            ກົດທີ່ປຸ່ມ <a class="btn btn-outline-primary" title="ສ້າງບິນຮັບເອົາປື້ມ" href="{% url 'point-list' %}"><i
+                class="fas fa-plus-square"></i>
+            </a>
+            <br>
+          </p>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-4">
+          <p>
+            ການສ້າງບັດສະມາຊິກ <a class="btn btn-outline-info" href="{% url 'point-create' %}"><i
+                class="fas fa-address-card"></i></a>
+          </p>
+
+        </div>
+
+        <div class="col-4">
+          <p>ເພີ່ມຂໍ້ມູນສະມາຊິກ <a class="btn btn-outline-primary" title="ເພີ່ມຂໍ້ມູນສະມາຊິກ"
+              href="{% url 'members-create' %}">
+              <i class="fas fa-user-plus"></i>
+            </a></p>
+        </div>
+
+        <div class="col-4">
+          <p>ສ້າງໃບທວງປື້ມ <a class="btn btn-outline-info" title="ສ້າງໃບທວງປື້ມ" href="{% url 'date-return-out' %}"><i
+                class="fas fa-file-invoice"></i>
+            </a>
+            <br>
+          </p>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <br>
+        </div>
+        <!--  <div class="col-4">
+              {% if user.is_authenticated %}
+                <p>ອອກຈາກລະບົບ<br>
+                ຂໍຂອບໃຈ</p>
+                <a class="btn btn-outline-info" href="{% url 'logout' %}">ອອກຈາກລະບົບ</a>
+              {% else %}
+        
+                <p>ເຂົ້າສູ່ລະບົບ<br></p>
+                <a class="btn btn-outline-info" href="{% url 'login' %}">ເຂົ້າສູ່ລະບົບ</a>
+              {% endif %}
+            </div> -->
+      </div>
+
+    </div>
+  </div>
+</main>
+{% include "includes/bootstrap_js.html" %}
+
+
+{% endblock content %}

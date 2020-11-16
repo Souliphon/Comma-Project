@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Required meta tags -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<title>ລາຍງານຂໍ້ມູນພະນັກງານ</title>
+	<style type="text/css">
+		body {
+			background: #fafafa;
+			color: #333333;
+			margin-top: 5rem;
+			font-family: Phetsarath OT, Saysettha OT;
+		}
+
+		h3,
+		h4 {
+			color: #444444;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body onload="window.print()">
+	<h3>ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ <br>
+		ສັນຕິພາບ ເອກະລາດ ປະຊາທິປະໄຕ ເອກະພາບ ວັດທະນະຖາວອນ</h3><br><br>
+	<img src="{% static 'blog/comma_cafe_logo.png' %}" class="img-thumbnail" width="100px" height="100px"><br><br>
+	<h4>ລາຍງານຂໍ້ມູນພະນັກງານ</h4><br>
+	<table class="table table-striped table-light table-bordered">
+		<thead>
+			<tr>
+				<th scope="col">ລະຫັດພະນັກງານ</th>
+				<th scope="col">ຊື່ພະນັກງານ</th>
+				<th scope="col">ນາມສະກຸນ</th>
+				<th scope="col">ເພດ</th>
+				<th scope="col">ວັນເດືອນປີເກີດ</th>
+				<th scope="col">ເບີໂທ</th>
+				<th scope="col">ອີເມວ</th>
+				<th scope="col">ບ້ານ</th>
+				<th scope="col">ເມືອງ</th>
+				<th scope="col">ແຂວງ</th>
+				<th scope="col">ຮູບສະມາຊິກ</th>
+				<!-- <th scope="col">ຮູບບັດປະຈຳຕົວ</th> -->
+			</tr>
+		</thead>
+		<tbody>
+			{% for e in user %}
+			<tr>
+				<td>{{ e.id }}</td>
+				<td>{{ e.firstname }}</td>
+				<td>{{ e.surname }}</td>
+				<td>{{ e.sex }}</td>
+				<td>{{ e.birthday }}</td>
+				<td>{{ e.tel }}</td>
+				<td>{{ e.user.email }}</td>
+				<td>{{ e.village }}</td>
+				<td>{{ e.district }}</td>
+				<td>{{ e.province }}</td>
+				<td>
+					<img class="rounded-circle article-img" style="width: 50px; height: 50px;" src="{{ e.image.url }}">
+				</td>
+			</tr>
+			{% endfor %}
+			<tr>
+				<td colspan="10">ຈຳນວນພະນັກງານທັງໝົດ</td>
+				<td>{{ total_employee }}</td>
+			</tr>
+		</tbody>
+	</table>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

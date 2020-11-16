@@ -1,0 +1,44 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-8 offset-md-2">
+
+    <h4 class="text-center">ລາຍການປື້ມທີ່ຈະຢືມ</h4>
+
+
+      <a class="btn btn-outline-success" title="ເລືອກຕັດຄະແນນສະມາຊິກ" href="{% url 'select-book-borrow' %}">
+        <!-- <i class="fas fa-cut"></i> -->ເລືອກປື້ມອີກຄັ້ງ
+      </a>
+      {% if empty %}
+      <h1 style="text-align: center;">{{ empty_message }}</h1>
+
+      {% else %}
+      <table class="table">
+        <thead>
+          <th>ຊື່ເລື່ອງ</th>
+          <th>ລະຫັດປື້ມ</th>
+
+        </thead>
+        {% for item in borrow_book.books.all %}
+
+        <tr>
+          <td>{{ item }}</td>
+          <td>{{ item.id }}</td>
+
+          <td><a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'borrow-book-update' item.id %}">ລືມ</a></td>
+
+        </tr>
+        {% endfor %}
+      </table>
+      <a class="btn btn-outline-info btn-sm mt-1 mb-1" href="{% url 'check-out-borrow-create' %}">ສ້າງຟອມ</a>
+
+      {% endif %}
+
+    </div>
+  </div>
+</main>
+
+
+{% endblock content %}

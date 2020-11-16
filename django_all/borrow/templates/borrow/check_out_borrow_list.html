@@ -1,0 +1,110 @@
+{%  load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Borrow Bill</title>
+  {% include "includes/bootstrap_css.html" %}
+
+
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+
+  <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+
+</head>
+
+<body>
+  {% include "includes/navbar.html" %}
+
+
+
+  <div class="container">
+    <!-- mb-3 mt-3 -->
+    <h4 class="text-center">ສ້າງບິນຢືມປື້ມ</h4>
+
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+      <thead>
+        <tr>
+          <th>ລະຫັດການຢືມປື້ມ</th>
+          <th>ລະຫັດລາຍລະອຽດປື້ມ</th>
+          <th>ລາຍການປື້ມ</th>
+          <th>ຄະແນນ</th>
+          <th>ຊື່ສະມາຊິກ</th>
+          <th>ພະນັກງານ</th>
+          <th>ວັນເດືອນປີຢືມປື້ມ</th>
+          <th>ວັນເດືອນປີຄືນປື້ມ</th>
+          <th>ທາງເລືອກ</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for c in borrow %}
+        <tr>
+          <td>{{ c.id }}</td>
+          <td>{{ c.book }}</td>
+          <td>{{ c.book.books.all }}</td>
+          <td>{{ c.point.amount }}</td>
+          <td>{{ c.point.member.firstname }} {{ c.point.member.surname }}</td>
+
+          <td>{{ c.employee }}</td>
+          <td>{{ c.date_rent|date:"d-m-Y" }}</td>
+          <td>{{ c.date_return|date:"d-m-Y" }}</td>
+          <td>
+
+            <a class="btn btn-outline-info btn-sm mt-1 mb-1" title="ສ້າງໃບບິນ" href="{% url 'borrow-bill-pdf' c.id %}">
+              <i class="fas fa-info-circle"></i>
+            </a>
+
+            <a class="btn btn-outline-success btn-sm mt-1 mb-1" title="ແກ້ໄຂ" href="{% url 'check-out-borrow-update' c.id %}">
+              <i class="far fa-edit"></i>
+            </a>
+          </td>
+
+        </tr>
+        {% endfor %}
+      </tbody>
+
+      <!-- <tfoot>
+      <tr>
+        <th>ລະຫັດບິນຢືມປື້ມ</th>
+        <th>ລະຫັດຈຳນວນປື້ມ</th>
+        <th>ຄະແນນ</th>
+        <th>ພະນັກງານ</th>
+        <th>ວັນເດືອນປີຢືມປື້ມ</th>
+        <th>ວັນເດືອນປີຄືນປື້ມ</th>
+        <th>ທາງເລືອກ</th>
+      </tr>
+    </tfoot> -->
+    </table>
+
+  </div>
+
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#example').DataTable();
+    });
+  </script>
+
+
+</body>
+
+</html>

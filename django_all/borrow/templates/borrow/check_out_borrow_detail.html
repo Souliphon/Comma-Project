@@ -1,0 +1,55 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+<article class="media content-section">
+  <div class="media-body">
+    <h3 style="text-align: center;">ຂໍ້ມູນລາຍລະອຽດການຢືມປື້ມ</h3>
+    <table class="table table-borderless">
+      <tr>
+        <td>
+          <h4>ລະຫັດຢືມ: {{ borrow.id }}</h4>
+        </td>
+        <td></td>
+        <td></td>
+        <td>
+          <h4>ສະມາຊິກ: {{ borrow.point.member }}</h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h4>ລະຫັດລາຍລະອຽດປື້ມ: {{ borrow.book }}</h4>
+        </td>
+        <td></td>
+        <td></td>
+        <td>
+          <h4>ຄະແນນ: {{ borrow.point.amount }}</h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h4>ລະຫັດຄະແນນ: {{ borrow.point }}</h4>
+        </td>
+        <td></td>
+        <td></td>
+        <td>
+          <h4>ວັນທີເດືອນຄືນປື້ມ: {{ borrow.date_return|date:"d-m-Y" }}</h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h4>ວັນທີເດືອນຢືມປື້ມ: {{ borrow.date_rent|date:"d-m-Y" }}</h4>
+        </td>
+        <td></td>
+        <td></td>
+        <td>
+          <h4>ພະນັກງານ: {{ borrow.employee }}</h4>
+        </td>
+      </tr>
+    </table>
+    <a class="btn btn-outline-success btn-sm mt-1 mb-1" href="#">Example</a>
+  </div>
+</article>
+
+
+
+{% endblock content%}

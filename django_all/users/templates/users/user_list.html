@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+<table class="table table-borderless">
+  <thead>
+    <th>ລະຫັດ</th>
+    <th>ຊື່ແທ້</th>
+    <th>ນາມສະກຸນ</th>
+    <th>ເພດ</th>
+    <th>ເບີໂທ</th>
+    <th>ວັນເດືອນປີເກີດ</th>
+  </thead>
+  {% for c in user %}
+
+  <tr>
+    <td>{{ c.id }}</td>
+    <td>{{ c.firstname }}</td>
+    <td>{{ c.surname }}</td>
+    <td>{{ c.sex }}</td>
+    <td>{{ c.tel }}</td>
+    <td>{{ c.birthday }}</td>
+
+    <!-- <td><a class="btn btn-success btn-sm mt-1 mb-1" href="#">Preview</a></td> -->
+  </tr>
+  {% endfor %}
+</table>
+
+
+{% endblock content%}
