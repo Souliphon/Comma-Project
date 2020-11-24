@@ -1,8 +1,8 @@
-lsfrom django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import BookOrderForm
-from .models import BookOrdergit 
+from .models import BookOrder
 from booktype.models import BookStore
 from django.contrib.auth.models import User
 # from django.db.models import Q
